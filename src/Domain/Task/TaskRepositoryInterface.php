@@ -25,4 +25,11 @@ interface TaskRepositoryInterface
      */
     public function findByUser(User $user): array;
 
+    /**
+     * @param Task $task
+     *
+     * @return array
+     */
+    public function save(Task $task):array;
+
 }
