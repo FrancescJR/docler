@@ -28,7 +28,7 @@ class TaskStub
     /**
      * @return Task
      */
-    public function default():Task
+    public static function default():Task
     {
         return static::create(
             TaskIdStub::default(),
