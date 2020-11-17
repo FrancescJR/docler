@@ -27,7 +27,7 @@ class TaskRepositoryStub implements TaskRepositoryInterface
     public function find(TaskId $taskId): Task
     {
         foreach($this->tasks as $task) {
-            if ($task->getId() === $taskId) {
+            if ($task->getId()->value() === $taskId->value()) {
                 return $task;
             }
         }

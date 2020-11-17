@@ -5,13 +5,15 @@
   "license": "open to all, copy me",
   "autoload": {
     "psr-4": {
-      "Cesc\\Docler\\": "src/"
+      "Cesc\\Docler\\": "src/",
+      "Cesc\\Docler\\Stubs\\": "stubs/"
     }
   },
     "require": {
         "symfony/config": "^5.1",
         "symfony/dependency-injection": "^5.1",
         "symfony/yaml": "^5.1",
-        "phpunit/phpunit": "^9.4"
+        "phpunit/phpunit": "^9.4",
+        "ramsey/uuid-doctrine": "^1.6"
     }
 }

@@ -27,6 +27,7 @@ class User
         UserUsername $username
     ) {
         $this->username = $username;
+        $this->tasks = [];
     }
 
     /**

@@ -36,7 +36,7 @@ class GetUserTasksService
         // to accept the username instead of the user itself
         // normally this way is more reusable. The extra overhead of the the previous query is
         // negligible
-        $tasks = $this->taskRepository->findByUser($user);
+        $tasks = $this->taskRepository->getByUser($user);
 
         $tasksPO = [];
 

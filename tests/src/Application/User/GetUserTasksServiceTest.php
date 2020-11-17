@@ -40,7 +40,7 @@ class GetUserTasksServiceTest extends TestCase
         $result = $service->execute(UserUsernameStub::DEFAULT_USERNAME);
 
         self::assertCount(1, $result);
-        self::assertEquals(TaskPO::class, $result[0]);
+        self::assertEquals(TaskPO::class, get_class($result[0]));
     }
 
 }

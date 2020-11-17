@@ -25,7 +25,7 @@ class UserRepositoryStub implements UserRepositoryInterface
     public function findUser(UserUsername $username): User
     {
         foreach($this->users as $user) {
-            if ($user->getUsername() === $username) {
+            if ($user->getUsername()->value() === $username->value()) {
                 return $user;
             }
         }
@@ -34,6 +34,6 @@ class UserRepositoryStub implements UserRepositoryInterface
 
     public function addUser(User $user):void
     {
-        $this->users = $user;
+        $this->users[] = $user;
     }
 }
