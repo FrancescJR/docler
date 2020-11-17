@@ -9,6 +9,7 @@ use Cesc\Docler\Domain\Task\Task;
 use Cesc\Docler\Domain\Task\TaskRepositoryInterface;
 use Cesc\Docler\Domain\Task\ValueObject\TaskId;
 use Cesc\Docler\Domain\User\User;
+use Cesc\Docler\Stubs\Domain\Task\TaskStub;
 
 class TaskRepository implements TaskRepositoryInterface
 {
@@ -22,7 +23,7 @@ class TaskRepository implements TaskRepositoryInterface
     public function getByUser(User $user): array
     {
         // TODO: Implement getByUser() method.
-        return [];
+        return [TaskStub::default(), TaskStub::default()];
     }
 
     public function save(Task $task): void

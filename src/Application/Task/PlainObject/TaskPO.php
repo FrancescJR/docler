@@ -27,21 +27,21 @@ class TaskPO implements JsonSerializable
     /**
      * @return array
      */
-    public function toArray(): array
+    public function jsonSerialize(): array
     {
-        return [
-            'id' => $this->id,
-            'description' => $this->description,
-            'status' => $this->status
-        ];
+        return $this->toArray();
     }
 
     /**
      * @return array
      */
-    public function jsonSerialize():array
+    public function toArray(): array
     {
-        return $this->toArray();
+        return [
+            'id'          => $this->id,
+            'description' => $this->description,
+            'status'      => $this->status
+        ];
     }
 
 
