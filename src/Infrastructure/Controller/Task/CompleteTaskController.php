@@ -7,6 +7,7 @@ use Cesc\Docler\Application\Task\CompleteTaskService;
 use Cesc\Docler\Domain\Task\Exception\TaskNotFoundException;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
 
 class CompleteTaskController
 {
@@ -19,7 +20,7 @@ class CompleteTaskController
     }
 
     /**
-     * @Route("/v1/tasks/{task}/complete", methods={"PATCH"})
+     * @Route("/v1/task/{task}/complete", methods={"PATCH"})
      *
      * @param string $task
      *

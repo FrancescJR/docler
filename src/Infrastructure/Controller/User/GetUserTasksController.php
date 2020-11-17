@@ -1,11 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Cesc\Docler\Infrastructure\Controller\Task;
+namespace Cesc\Docler\Infrastructure\Controller\User;
 
-use Cesc\Docler\Application\Task\CompleteTaskService;
 use Cesc\Docler\Application\User\GetUserTasksService;
-use Cesc\Docler\Domain\Task\Exception\TaskNotFoundException;
+use Symfony\Component\Routing\Annotation\Route;
 use Cesc\Docler\Domain\User\Exception\UserNotFoundException;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -23,14 +22,14 @@ class GetUserTasksController
     /**
      * @Route("/v1/user/{username}/tasks", methods={"GET"})
      *
-     * @param string $task
+     * @param string $username
      *
      * @return JsonResponse
      */
-    public function getUserTasksService(string $task): JsonResponse
+    public function getTasks(string $username): JsonResponse
     {
         try {
-            $tasksPO = $this->getUserTasksService->execute($task);
+            $tasksPO = $this->getUserTasksService->execute($username);
         } catch (UserNotFoundException $e) {
             return new JsonResponse(["error" => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
         } catch (Exception $e) {

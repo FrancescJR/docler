@@ -1,0 +1,38 @@
+services:
+  # removing symfony defaults just in case.
+    _defaults:
+        autowire: false
+        autoconfigure: false
+        public: false
+
+
+    #Adding it all in one file
+    #Application
+    application.services.get_user_tasks:
+        class: Cesc\Docler\Application\User\GetUserTasksService
+        arguments:
+            - '@repository.user'
+            - '@repository.task'
+
+    application.services.complete_task:
+        class: Cesc\Docler\Application\Task\CompleteTaskService
+        arguments:
+            - '@repository.task'
+
+    #Infrastructure
+    Cesc\Docler\Infrastructure\Controller\Task\CompleteTaskController:
+        arguments:
+            - '@application.services.complete_task'
+        tags: ['controller.service_arguments']
+
+    Cesc\Docler\Infrastructure\Controller\User\GetUserTasksController:
+        arguments:
+            - '@application.services.get_user_tasks'
+        tags: ['controller.service_arguments']
+
+    repository.user:
+        class: Cesc\Docler\Infrastructure\Persistence\UserRepository
+
+    repository.task:
+        class: Cesc\Docler\Infrastructure\Persistence\TaskRepository
+
