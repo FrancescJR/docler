@@ -32,8 +32,10 @@ class GetUserTasksService
     {
         $user = $this->userRepository->findUser(new UserUsername($username));
 
-        // I know this could be done in a single query by just making the repo accept the username
-        // normally this way is more reusable.
+        // I know this could be done in a single query by just making a function in the interface
+        // to accept the username instead of the user itself
+        // normally this way is more reusable. The extra overhead of the the previous query is
+        // negligible
         $tasks = $this->taskRepository->findByUser($user);
 
         $tasksPO = [];
