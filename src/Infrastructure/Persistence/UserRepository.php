@@ -14,6 +14,6 @@ class UserRepository implements UserRepositoryInterface
     public function findUser(UserUsername $username): User
     {
         // TODO: Implement findUser() method.
-        throw new UserNotFoundException();
+        throw new UserNotFoundException("User with Username {$username->value()} not found.");
     }
 }

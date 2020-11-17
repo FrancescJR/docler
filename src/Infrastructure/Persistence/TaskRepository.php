@@ -16,7 +16,7 @@ class TaskRepository implements TaskRepositoryInterface
     public function find(TaskId $taskId): Task
     {
         // TODO: Implement find() method.
-        throw new TaskNotFoundException();
+        throw new TaskNotFoundException("Task with id {$taskId->value()} not found.");
     }
 
     public function getByUser(User $user): array
