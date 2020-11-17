@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace Cesc\Docler\Stubs\Domain\Task;
 
 use Cesc\Docler\Domain\Task\Task;
-use Cesc\Docler\Domain\User\ValueObject\TaskDescription;
-use Cesc\Docler\Domain\User\ValueObject\TaskId;
-use Cesc\Docler\Domain\User\ValueObject\TaskStatus;
+use Cesc\Docler\Domain\Task\ValueObject\TaskDescription;
+use Cesc\Docler\Domain\Task\ValueObject\TaskId;
+use Cesc\Docler\Domain\Task\ValueObject\TaskStatus;
 use Cesc\Docler\Stubs\Domain\Task\ValueObject\TaskDescriptionStub;
 use Cesc\Docler\Stubs\Domain\Task\ValueObject\TaskIdStub;
 use Cesc\Docler\Stubs\Domain\Task\ValueObject\TaskStatusStub;

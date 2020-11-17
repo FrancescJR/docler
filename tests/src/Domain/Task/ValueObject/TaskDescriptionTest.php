@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Cesc\Docler\Domain\Task\ValueObject;
 
 
-use Cesc\Docler\Domain\User\ValueObject\TaskDescription;
 use Cesc\Docler\Stubs\Domain\Task\ValueObject\TaskDescriptionStub;
 use PHPUnit\Framework\TestCase;
 

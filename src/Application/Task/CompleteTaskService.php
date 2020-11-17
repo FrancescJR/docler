@@ -6,8 +6,8 @@ namespace Cesc\Docler\Application\Task;
 use Cesc\Docler\Domain\Task\Exception\InvalidTaskIdValueException;
 use Cesc\Docler\Domain\Task\Exception\TaskNotFoundException;
 use Cesc\Docler\Domain\Task\TaskRepositoryInterface;
-use Cesc\Docler\Domain\User\ValueObject\TaskId;
-use Cesc\Docler\Domain\User\ValueObject\TaskStatus;
+use Cesc\Docler\Domain\Task\ValueObject\TaskId;
+use Cesc\Docler\Domain\Task\ValueObject\TaskStatus;
 
 class CompleteTaskService
 {

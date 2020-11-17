@@ -5,7 +5,7 @@ namespace Cesc\Docler\Stubs\Domain\Task\ValueObject;
 
 
 use Cesc\Docler\Domain\Task\Exception\InvalidTaskIdValueException;
-use Cesc\Docler\Domain\User\ValueObject\TaskId;
+use Cesc\Docler\Domain\Task\ValueObject\TaskId;
 use Ramsey\Uuid\Uuid;
 
 class TaskIdStub

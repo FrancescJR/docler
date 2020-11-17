@@ -22,7 +22,7 @@ class UserStub
     /**
      * @return User
      */
-    public function default():User
+    public static function default():User
     {
         return static::create(
             UserUsernameStub::default(),

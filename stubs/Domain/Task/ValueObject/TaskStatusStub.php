@@ -5,7 +5,7 @@ namespace Cesc\Docler\Stubs\Domain\Task\ValueObject;
 
 
 use Cesc\Docler\Domain\Task\Exception\InvalidTaskStatusValueException;
-use Cesc\Docler\Domain\User\ValueObject\TaskStatus;
+use Cesc\Docler\Domain\Task\ValueObject\TaskStatus;
 
 class TaskStatusStub
 {

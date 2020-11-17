@@ -45,5 +45,13 @@ class User
         return $this->tasks;
     }
 
+    /**
+     * @param Task $task
+     */
+    public function addTask(Task $task): void
+    {
+        $this->tasks[] = $task;
+    }
+
 
 }

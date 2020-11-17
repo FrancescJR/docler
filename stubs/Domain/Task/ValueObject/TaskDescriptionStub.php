@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Cesc\Docler\Stubs\Domain\Task\ValueObject;
 
-use Cesc\Docler\Domain\User\ValueObject\TaskDescription;
+use Cesc\Docler\Domain\Task\ValueObject\TaskDescription;
 
 class TaskDescriptionStub
 {

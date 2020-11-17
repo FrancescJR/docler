@@ -4,8 +4,9 @@ declare(strict_types=1);
 namespace Cesc\Docler\Application\Task\PlainObject;
 
 use Cesc\Docler\Domain\Task\Task;
+use JsonSerializable;
 
-class TaskPO
+class TaskPO implements JsonSerializable
 {
     public $id;
     public $description;
@@ -18,11 +19,30 @@ class TaskPO
      */
     public function __construct(Task $task)
     {
-        $this->id = $task->getId()->value();
+        $this->id          = $task->getId()->value();
         $this->description = $task->getDescription()->value();
-        $this->status = $task->getStatus()->value();
+        $this->status      = $task->getStatus()->value();
     }
 
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'description' => $this->description,
+            'status' => $this->status
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function jsonSerialize():array
+    {
+        return $this->toArray();
+    }
 
 
 }

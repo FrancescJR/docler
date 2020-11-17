@@ -5,7 +5,6 @@ namespace Cesc\Docler\Domain\Task\ValueObject;
 
 
 use Cesc\Docler\Domain\Task\Exception\InvalidTaskStatusValueException;
-use Cesc\Docler\Domain\User\ValueObject\TaskStatus;
 use PHPUnit\Framework\TestCase;
 
 class TaskStatusTest extends TestCase

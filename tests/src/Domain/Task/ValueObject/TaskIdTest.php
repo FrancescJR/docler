@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Cesc\Docler\Domain\Task\ValueObject;
 
-use Cesc\Docler\Domain\User\ValueObject\TaskId;
 use Cesc\Docler\Stubs\Domain\Task\ValueObject\TaskIdStub;
 use PHPUnit\Framework\TestCase;
 

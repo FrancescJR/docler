@@ -6,7 +6,7 @@ namespace Cesc\Docler\Domain\Task;
 
 use Cesc\Docler\Domain\Task\Exception\TaskNotFoundException;
 use Cesc\Docler\Domain\User\User;
-use Cesc\Docler\Domain\User\ValueObject\TaskId;
+use Cesc\Docler\Domain\Task\ValueObject\TaskId;
 
 interface TaskRepositoryInterface
 {
@@ -23,13 +23,12 @@ interface TaskRepositoryInterface
      *
      * @return Task[]
      */
-    public function findByUser(User $user): array;
+    public function getByUser(User $user): array;
 
     /**
      * @param Task $task
      *
-     * @return array
      */
-    public function save(Task $task):array;
+    public function save(Task $task): void;
 
 }
