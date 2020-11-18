@@ -23,7 +23,7 @@ start:
 stop:
 	cd cicd/; docker-compose -f docker-compose.yaml stop
 
-tests:
+test:
 	vendor/phpunit/phpunit/phpunit
 
 

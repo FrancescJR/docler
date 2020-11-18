@@ -5,7 +5,13 @@ namespace Cesc\Docler\Domain\Task\ValueObject;
 
 
 use Cesc\Docler\Domain\Task\Exception\InvalidTaskStatusValueException;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Class TaskStatus
+ * @package Cesc\Docler\Domain\Task\ValueObject
+ * @ORM\Embeddable()
+ */
 class TaskStatus
 {
     public const COMPLETED = 'completed';
@@ -19,6 +25,7 @@ class TaskStatus
     ];
 
     /**
+     * @ORM\Column(name="status",type="text")
      * @var string
      */
     private $value;

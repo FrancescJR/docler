@@ -1,20 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace Cesc\Docler\Domain\Task\ValueObject;
+namespace Cesc\Docler\Domain\User\ValueObject;
 
 
-use Cesc\Docler\Domain\Task\Exception\InvalidTaskIdValueException;
+use Cesc\Docler\Domain\User\Exception\InvalidUserIdValueException;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class TaskId
- * @package Cesc\Docler\Domain\Task\ValueObject
+ * Class UserId
+ * @package Cesc\Docler\Domain\User\ValueObject
  * @ORM\Embeddable()
  */
-class TaskId
+class UserId
 {
 
     /**
@@ -29,7 +29,7 @@ class TaskId
      *
      * @param string $taskId
      *
-     * @throws InvalidTaskIdValueException
+     * @throws InvalidUserIdValueException
      */
     public function __construct(string $taskId)
     {
@@ -40,12 +40,12 @@ class TaskId
     /**
      * @param string $value
      *
-     * @throws InvalidTaskIdValueException
+     * @throws InvalidUserIdValueException
      */
     private function assertIsUuid(string $value): void
     {
         if ( ! Uuid::isValid($value)) {
-            throw new InvalidTaskIdValueException('Task ID is not a UUID.');
+            throw new InvalidUserIdValueException('User ID is not a UUID.');
         }
     }
 

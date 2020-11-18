@@ -20,6 +20,9 @@ To use in localhost do:
 
 `make start`
 
+### Stopping the web server
+
+`make stop`
 
 ## Usage
 

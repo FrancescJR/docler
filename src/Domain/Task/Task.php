@@ -7,22 +7,37 @@ use Cesc\Docler\Domain\User\User;
 use Cesc\Docler\Domain\Task\ValueObject\TaskDescription;
 use Cesc\Docler\Domain\Task\ValueObject\TaskId;
 use Cesc\Docler\Domain\Task\ValueObject\TaskStatus;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Class Task
+ * @package Cesc\Docler\Domain\Task
+ * @ORM\Entity()
+ * @ORM\Table(name="task")
+ */
 class Task
 {
     /**
+     * @ORM\Embedded(class="Cesc\Docler\Domain\Task\ValueObject\TaskId", columnPrefix=false)
      * @var TaskId
      */
     private $id;
 
     /**
+     * @ORM\Embedded(class="Cesc\Docler\Domain\Task\ValueObject\TaskDescription", columnPrefix=false)
      * @var TaskDescription
      */
     private $description;
 
+    /**
+     * @ORM\Embedded(class="Cesc\Docler\Domain\Task\ValueObject\TaskStatus", columnPrefix=false)
+     * @var TaskStatus
+     */
     private $status;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Cesc\Docler\Domain\User\User", inversedBy="tasks", fetch="EAGER")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * @var User|null;
      */
     private $user;

@@ -1,3 +1,6 @@
+parameters:
+    database.url: '%env(resolve:DATABASE_URL)%'
+
 services:
   # removing symfony defaults just in case.
     _defaults:
