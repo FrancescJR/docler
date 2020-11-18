@@ -12,12 +12,12 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions && sync \
     zip \
     && rm -rf /var/cache/apk/* /tmp/* /var/www/html
 
-# Composer Dependencies
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && composer install --no-dev \
-    && rm -rf /usr/local/bin/composer;
-
 RUN curl -sS https://get.symfony.com/cli/installer | bash \
     &&  mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
 COPY . .
+
+# Composer Dependencies
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && composer install --no-dev \
+    && rm -rf /usr/local/bin/composer;
