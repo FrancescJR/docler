@@ -62,7 +62,7 @@ class TaskRepository implements TaskRepositoryInterface
     {
         $tasks = [];
         foreach($this->tasks as $task) {
-            if ($task->getUser() === $user) {
+            if ($task->getUser()->getUsername()->value() === $user->getUsername()->value()) {
                 $tasks[] = $task;
             }
         }

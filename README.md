@@ -1,8 +1,57 @@
 # Docler Holding Test Interview
 
-## Instructions
+Code based on the user story: "As a user, I want to have an ability to see a list of tasks for my day, so that I can do them one by one".
 
-Installation execution and testing.
+This is the "plain" solution. Check over-engineering-1 and other branches
+
+## Installation
+
+### Requirements
+
+To use in local, you will need PHP and composer installed, to use via Docker you will need Docker installed.
+
+### Installation
+
+To use in localhost do:
+
+`make local-install`  
+
+(if you have not yet composer installed, you can execute first `sudo make local-install-composer`. This
+will install composer in your machine, but it also needs PHP installed. It needs sudo permissions
+because it moves the executable file to a directory used to find the shell commands that requires
+root access) 
+
+Otherwise, via docker, execute:
+
+`make docker-install`
+
+### Running the web server
+
+For local we are using the symfony server
+
+
+## Usage
+
+Once you have the web browser running, either locally using symfony server or in the docker. You can
+go to 
+
+[GET http://127.0.0.1:8000/v1/user/cesc/tasks](http://127.0.0.1:8000/v1/user/cesc/tasks) and see the list of available tasks.
+
+In order to set a task completed you need to make a PATCH request:
+
+[PATCH http://127.0.0.1:8000/v1/task/{taskId}/complete](http://127.0.0.1:8000/v1/task/{taskId}/complete)
+
+Copy and paste the taskID from the any task from the list before.
+
+You can do the GET again and see the status of the task.
+
+## Testing
+
+There are only unit tests not integration tests.
+
+To execute them you will have had to install the local variant. Then execute
+
+`make local-tests`
 
 ## Comments
 
@@ -37,41 +86,34 @@ Trying not to use:
 
 ### About Event-driven Applications 
 
+See overengineering-3 branch for a sample if what could we do via events.
+- cache repository with decorator pattern.
+
 One option would be to fire the event "task completed" in the case the endpoint
 task completed was called. Then remove this task from the user
 in some kind of cache repository that we might have.
 
-overengineering 4: do the above
-- cache repository with decorator pattern.
-
 ### About Containers
 
+On this branch the Dockerfile just installs and runs symfony server.
 
-That's why I'll do 1, docker container I assume... (or a dependency injection container??
-in that case I am just using symfony's.)
+see overengineering-1 branch for another version, with docker-compose, and DB and it has also doctrine.
 
-TODO  "Over engineer 1 "
-1 - Should I do a docker file with php-fpm + nginx?
-Ok lets do it...
 
-## Questions
+
+### About JWT
 
 TODO overengineering 2: 
-  
-2 - Authentication via JWT. Maybe add a service
-Let's do it - in a different branch
 
-TODO overengineering 3:
 
-3 - Should I pretend that I am using doctrine and do things with fixtures?
-Let's do it -in a different branch.
+
 
 
 
 
 ### Summing up TODO:
 
-1 - in memory repos
+
 2 - docker file
 --- completed
 3 - JWT authentication (service + repos modification + headers?) -> new branch
