@@ -7,15 +7,30 @@ use Cesc\Docler\Domain\User\Exception\UserNotFoundException;
 use Cesc\Docler\Domain\User\User;
 use Cesc\Docler\Domain\User\UserRepositoryInterface;
 use Cesc\Docler\Domain\User\ValueObject\UserUsername;
-use Cesc\Docler\Stubs\Domain\User\UserStub;
 
+// By not having a database this is too similar to the stubs.
 class UserRepository implements UserRepositoryInterface
 {
+    /**
+     * @var string[]
+     */
+    private $users = [
+        'cesc', 'julia', 'adams', 'sailor3', 'mountain', 'bandit3'
+    ];
 
+    /**
+     * @param UserUsername $username
+     *
+     * @return User
+     * @throws UserNotFoundException
+     */
     public function findUser(UserUsername $username): User
     {
-        return UserStub::default();
-        // TODO: Implement findUser() method.
+        foreach($this->users as $userData) {
+            if ($userData == $username->value()) {
+                return new User(new UserUsername($userData));
+            }
+        }
         throw new UserNotFoundException("User with Username {$username->value()} not found.");
     }
 }
