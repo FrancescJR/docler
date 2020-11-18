@@ -27,7 +27,7 @@ class CompleteTaskServiceTest extends TestCase
 
         $service->execute(TaskIdStub::DEFAULT_ID);
 
-        $task = $this->taskRepository->find(TaskIdStub::default());
+        $task = $this->taskRepository->findById(TaskIdStub::default());
 
         self::assertEquals(TaskStatus::COMPLETED, $task->getStatus()->value());
     }

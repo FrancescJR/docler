@@ -51,7 +51,7 @@ class TaskRepository implements TaskRepositoryInterface
         ];
     }
 
-    public function find(TaskId $taskId): Task
+    public function findById(TaskId $taskId): Task
     {
         foreach($this->tasks as $id => $task) {
             if ($id === $taskId->value()) {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Cesc\Docler\Domain\Task;
 
 
+use Cesc\Docler\Domain\Exception\PersistenceException;
 use Cesc\Docler\Domain\Task\Exception\TaskNotFoundException;
 use Cesc\Docler\Domain\User\User;
 use Cesc\Docler\Domain\Task\ValueObject\TaskId;
@@ -16,18 +17,11 @@ interface TaskRepositoryInterface
      * @return Task
      * @throws TaskNotFoundException
      */
-    public function find(TaskId $taskId): Task;
-
-    /**
-     * @param User $user
-     *
-     * @return Task[]
-     */
-    public function getByUser(User $user): array;
+    public function findById(TaskId $taskId): Task;
 
     /**
      * @param Task $task
-     *
+     * @throws PersistenceException
      */
     public function save(Task $task): void;
 

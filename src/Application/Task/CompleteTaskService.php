@@ -26,7 +26,7 @@ class CompleteTaskService
      */
     public function execute(string $taskId): void
     {
-        $task = $this->taskRepository->find(new TaskId($taskId));
+        $task = $this->taskRepository->findById(new TaskId($taskId));
 
         $task->setStatus(new TaskStatus(TaskStatus::COMPLETED));
 

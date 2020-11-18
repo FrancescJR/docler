@@ -22,6 +22,7 @@ class GetUserTasksServiceTest extends TestCase
         $user = UserStub::default();
         $task = TaskStub::default();
         $task->setUser($user);
+        $user->addTask($task);
 
         $this->userRepository = new UserRepositoryStub();
         $this->userRepository->addUser($user);

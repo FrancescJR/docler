@@ -24,7 +24,7 @@ class TaskRepositoryStub implements TaskRepositoryInterface
      * @return Task
      * @throws TaskNotFoundException
      */
-    public function find(TaskId $taskId): Task
+    public function findById(TaskId $taskId): Task
     {
         foreach($this->tasks as $task) {
             if ($task->getId()->value() === $taskId->value()) {
