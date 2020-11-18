@@ -2,32 +2,23 @@
 
 Code based on the user story: "As a user, I want to have an ability to see a list of tasks for my day, so that I can do them one by one".
 
-This is the "plain" solution. Check over-engineering-1 and other branches
+Over-engineering 1, doctrine and docker-compose
 
 ## Installation
 
 ### Requirements
 
-To use in local, you will need PHP and composer installed, to use via Docker you will need Docker installed.
+you will need to have docker-compose and PHP installed.
 
 ### Installation
 
 To use in localhost do:
 
-`make local-install`  
-
-(if you have not yet composer installed, you can execute first `sudo make local-install-composer`. This
-will install composer in your machine, but it also needs PHP installed. It needs sudo permissions
-because it moves the executable file to a directory used to find the shell commands that requires
-root access) 
-
-Otherwise, via docker, execute:
-
-`make docker-install`
+`make install`
 
 ### Running the web server
 
-For local we are using the symfony server
+`make start`
 
 
 ## Usage
@@ -43,7 +34,7 @@ In order to set a task completed you need to make a PATCH request:
 
 Copy and paste the taskID from the any task from the list before.
 
-In this version there is no persistence, so it's pretty much impossible to save anything.
+WE have persistence here so status should be saved.
 
 ## Testing
 
@@ -95,11 +86,8 @@ in some kind of cache repository that we might have.
 
 ### About Containers
 
-On this branch the Dockerfile just installs and runs symfony server.
-
-see overengineering-1 branch for another version, with docker-compose, and DB and it has also doctrine.
-
-
+Here we have a nicer way with our docker file. It's actually a docker compose with
+3 docker, the php-fpm process, the nginx, and the DB.
 
 ### About JWT
 

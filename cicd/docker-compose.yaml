@@ -1,0 +1,54 @@
+version: '3.7'
+services:
+  docler-service-fpm:
+    container_name: docler-service-fpm
+    image: docler-service-fpm
+    entrypoint: sh entrypoint.sh
+    depends_on:
+      - docler-service-db
+    build:
+      context: ../
+      dockerfile: ./cicd/Dockerfile
+    networks:
+      - docler
+    env_file:
+      - ../.env
+    volumes:
+      - ../:/app
+
+  docler-service-nginx:
+    container_name: docler-service-nginx
+    image: docler-service-nginx
+    build:
+      context: nginx/
+      dockerfile: ./Dockerfile
+    ports:
+      - "8000:80"
+    environment:
+      - API_HOST=docler-service-fpm
+    depends_on:
+      - docler-service-fpm
+    networks:
+      - docler
+
+  docler-service-db:
+    image: mysql:5.7
+    container_name: docler-service-db
+    hostname: docler-service-db
+    logging:
+      driver: none
+    environment:
+      MYSQL_DATABASE: docler
+      MYSQL_USER: develop
+      MYSQL_PASSWORD: develop
+      MYSQL_ROOT_PASSWORD: develop
+    ports:
+      - "3307:3306"
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql_mode=""
+    networks:
+      - docler
+
+
+networks:
+  docler:
+    external: true

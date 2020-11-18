@@ -4,37 +4,28 @@ PROJECT_DIRECTORY := $(shell pwd)
 local-install-composer:
 	curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-local-install:
+install:
 	@echo "Make sure you have composer installed. Run sudo make install-composer to install it."
 	rm -rf vendor
+	rm composer.lock
 	composer install
+	@cd cicd/; docker-compose build
+	docker network create docler || true
 
-local-start:
-	@echo "Starting symfony server"
-	symfony server:start --no-tls -d
-	@echo "Done. 127.0.0.1:8000 Open for requests"
+logs:
+	cd cicd/; docker-compose logs -f
 
-local-stop:
-	@echo "Stopping symfony server"
-	symfony server:start -d
-	@echo "Done"
 
-local-tests:
+start:
+	cd cicd/; docker-compose up -d
+	@echo "Done. You can access this service at http://localhost:8000"
+
+stop:
+	cd cicd/; docker-compose -f docker-compose.yaml stop
+
+tests:
 	vendor/phpunit/phpunit/phpunit
 
-docker-install:
-	@echo "Make sure you have docker installed. Check internet on how to install it on your OS."
-	docker build . -f cicd/Dockerfile -t cesc-docler
-
-
-docker-start:
-	@echo "Starting cesc-docler image"
-	docker run -p 8000:8000 --name cesc-docler -d cesc-docler symfony server:start --no-tls
-	@echo "Done. 127.0.0.1:8000 Open for requests"
-
-docker-stop:
-	docker stop cesc-docler
-	@echo "Done"
 
 
 

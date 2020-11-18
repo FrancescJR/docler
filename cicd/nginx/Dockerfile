@@ -1,0 +1,8 @@
+FROM nginx:1.19-alpine
+
+COPY default.conf.template /etc/nginx/templates/default.conf.template
+
+WORKDIR /app
+
+# This line in mandatory because of root directory in default.conf
+RUN mkdir public
