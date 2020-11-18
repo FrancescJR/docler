@@ -34,8 +34,7 @@ class GetUserTasksServiceTest extends TestCase
     public function testSuccess():void
     {
         $service = new GetUserTasksService(
-            $this->userRepository,
-            $this->taskRepository
+            $this->userRepository
         );
 
         $result = $service->execute(UserUsernameStub::DEFAULT_USERNAME);

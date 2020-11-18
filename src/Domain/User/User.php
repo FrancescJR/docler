@@ -6,6 +6,7 @@ namespace Cesc\Docler\Domain\User;
 use Cesc\Docler\Domain\Task\Task;
 use Cesc\Docler\Domain\User\ValueObject\UserId;
 use Cesc\Docler\Domain\User\ValueObject\UserUsername;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -48,7 +49,7 @@ class User
     ) {
         $this->id = $userId;
         $this->username = $username;
-        $this->tasks = [];
+        $this->tasks = new ArrayCollection();
     }
 
     /**
