@@ -24,15 +24,17 @@ local-tests:
 
 docker-install:
 	@echo "Make sure you have docker installed. Check internet on how to install it on your OS."
-	docker build cicd/Dockerfile -t cesc-docler
+	docker build . -f cicd/Dockerfile -t cesc-docler
 
 
 docker-start:
 	@echo "Starting cesc-docler image"
-	docker run -d cesc-docler
+	docker run -p 8000:8000 --name cesc-docler -d cesc-docler symfony server:start --no-tls
+	@echo "Done. 127.0.0.1:8000 Open for requests"
 
 docker-stop:
 	docker stop cesc-docler
+	@echo "Done"
 
 
 

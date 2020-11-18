@@ -43,7 +43,7 @@ In order to set a task completed you need to make a PATCH request:
 
 Copy and paste the taskID from the any task from the list before.
 
-You can do the GET again and see the status of the task.
+In this version there is no persistence, so it's pretty much impossible to save anything.
 
 ## Testing
 

@@ -12,32 +12,35 @@ use Cesc\Docler\Domain\Task\ValueObject\TaskId;
 use Cesc\Docler\Domain\Task\ValueObject\TaskStatus;
 use Cesc\Docler\Domain\User\User;
 use Cesc\Docler\Domain\User\ValueObject\UserUsername;
-use Cesc\Docler\Stubs\Domain\Task\TaskStub;
-use Ramsey\Uuid\Uuid;
 
 // By not having a database this is too similar to the stubs.
 class TaskRepository implements TaskRepositoryInterface
 {
     private $tasks;
 
+    private const TASK_ID_1 = '49f52fc2-2986-11eb-87f0-0242ac110002';
+    private const TASK_ID_2 = '49f55e34-2986-11eb-b0b8-0242ac110002';
+    private const TASK_ID_3 = '49f5650a-2986-11eb-9e57-0242ac110002';
+
+
     public function __construct()
     {
         $user  = new User(new UserUsername('cesc'));
         $task1 = new Task(
-            new TaskId(Uuid::uuid1()->toString()),
+            new TaskId(self::TASK_ID_1),
             new TaskDescription("Task 1"),
             new TaskStatus(TaskStatus::TODO)
         );
         $task1->setUser($user);
         $task2 = new Task(
-            new TaskId(Uuid::uuid1()->toString()),
+            new TaskId(self::TASK_ID_2),
             new TaskDescription("Task 2"),
             new TaskStatus(TaskStatus::TODO)
         );
         $task2->setUser($user);
         $task3 = new Task(
-            new TaskId(Uuid::uuid1()->toString()),
-            new TaskDescription("Task 2"),
+            new TaskId(self::TASK_ID_3),
+            new TaskDescription("Task 3"),
             new TaskStatus(TaskStatus::TODO)
         );
         $task3->setUser($user);
