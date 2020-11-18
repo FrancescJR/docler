@@ -11,6 +11,7 @@ use Cesc\Docler\Domain\Task\ValueObject\TaskDescription;
 use Cesc\Docler\Domain\Task\ValueObject\TaskId;
 use Cesc\Docler\Domain\Task\ValueObject\TaskStatus;
 use Cesc\Docler\Domain\User\User;
+use Cesc\Docler\Domain\User\ValueObject\UserId;
 use Cesc\Docler\Domain\User\ValueObject\UserUsername;
 
 // By not having a database this is too similar to the stubs.
@@ -25,7 +26,10 @@ class TaskRepository implements TaskRepositoryInterface
 
     public function __construct()
     {
-        $user  = new User(new UserUsername('cesc'));
+        $user  = new User(
+            new UserId('49f52fc2-2986-11eb-87f0-0242ac110002'),
+            new UserUsername('cesc')
+        );
         $task1 = new Task(
             new TaskId(self::TASK_ID_1),
             new TaskDescription("Task 1"),

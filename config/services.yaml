@@ -14,13 +14,12 @@ services:
     application.services.get_user_tasks:
         class: Cesc\Docler\Application\User\GetUserTasksService
         arguments:
-            - '@repository.user'
-            - '@repository.task'
+            - '@repository.doctrine.user'
 
     application.services.complete_task:
         class: Cesc\Docler\Application\Task\CompleteTaskService
         arguments:
-            - '@repository.task'
+            - '@repository.doctrine.task'
 
     #Infrastructure
     Cesc\Docler\Infrastructure\Controller\Task\CompleteTaskController:
@@ -38,4 +37,12 @@ services:
 
     repository.task:
         class: Cesc\Docler\Infrastructure\Persistence\TaskRepository
+
+    repository.doctrine.user:
+        class: Cesc\Docler\Infrastructure\Persistence\UserDoctrineRepository
+        arguments: ['@doctrine']
+
+    repository.doctrine.task:
+        class: Cesc\Docler\Infrastructure\Persistence\TaskDoctrineRepository
+        arguments: ['@doctrine']
 

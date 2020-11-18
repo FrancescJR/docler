@@ -30,7 +30,7 @@ class UserRepository implements UserRepositoryInterface
     public function findUser(UserUsername $username): User
     {
         foreach ($this->users as $userData) {
-            if ($userData == $username->value()) {
+            if ($userData[1] == $username->value()) {
                 return new User(new UserId($userData[0]), new UserUsername($userData[1]));
             }
         }

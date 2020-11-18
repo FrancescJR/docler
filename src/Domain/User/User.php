@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class User
  * @package Cesc\Docler\Domain\User
  * @ORM\Entity()
- * @ORM\Table(name="user")
+ * @ORM\Table(name="user", indexes={ @ORM\Index(name="unique_username", columns={"username"})})
  */
 class User
 {
@@ -72,7 +72,7 @@ class User
      */
     public function getTasks(): array
     {
-        return $this->tasks;
+        return $this->tasks->toArray();
     }
 
     /**

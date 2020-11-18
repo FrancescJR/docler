@@ -15,7 +15,7 @@ class UserUsername
 {
 
     /**
-     * @ORM\Column(name="username", type="text", length=255)
+     * @ORM\Column(name="username", type="string", length=255)
      * @var string
      */
     private $value;
