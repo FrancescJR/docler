@@ -20,6 +20,12 @@ To use in localhost do:
 
 `make start`
 
+IMPORTANT: if it is the first time you are using it, docker with fpm might start before
+the database is actually ready to receive requests and some installations command might break.
+If you see the error "Connection refused", that's it. In that case, wait until the server is ready
+teh error message will change to "base view not found". When that happens, just stop and start again.
+`make stop; make start` and the necessary commands will then execute properly.
+
 ### Stopping the web server
 
 `make stop`
